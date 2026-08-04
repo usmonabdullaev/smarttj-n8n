@@ -1,0 +1,53 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: smarttj-n8n
+    restart: unless-stopped
+
+    ports:
+      - "127.0.0.1:5678:5678"
+
+    environment:
+      NODE_ENV: production
+      N8N_HOST: smarttj-n8n.duckdns.org
+      N8N_PROTOCOL: https
+      N8N_PORT: 5678
+      WEBHOOK_URL: https://smarttj-n8n.duckdns.org/
+      N8N_EDITOR_BASE_URL: https://smarttj-n8n.duckdns.org/
+      GENERIC_TIMEZONE: Asia/Dushanbe
+      TZ: Asia/Dushanbe
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY}
+      EXECUTIONS_MODE: regular
+      EXECUTIONS_DATA_SAVE_ON_SUCCESS: none
+      EXECUTIONS_DATA_SAVE_ON_ERROR: all
+      EXECUTIONS_DATA_SAVE_ON_MANUAL_EXECUTIONS: true
+      EXECUTIONS_DATA_PRUNE: true
+      EXECUTIONS_DATA_MAX_AGE: 336
+      N8N_RUNNERS_ENABLED: true
+      N8N_PROXY_HOPS: 1
+      N8N_DIAGNOSTICS_ENABLED: false
+      N8N_PERSONALIZATION_ENABLED: false
+
+    volumes:
+      - n8n-data:/home/node/.n8n
+      - ./local-files:/files
+
+    networks:
+      - smarttj-network
+
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - wget --spider --quiet http://127.0.0.1:5678/healthz || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  n8n-data:
+    name: n8n-data
+
+networks:
+  smarttj-network:
+    external: true
