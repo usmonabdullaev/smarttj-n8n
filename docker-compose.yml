@@ -13,7 +13,7 @@ services:
       N8N_HOST: smarttj-n8n.duckdns.org
       N8N_PROTOCOL: https
       N8N_PORT: 5678
-      WEBHOOK_URL: https://smarttj-n8n.duckdns.org/
+      N8N_WEBHOOK_URL: https://smarttj-n8n.duckdns.org/
       N8N_EDITOR_BASE_URL: https://smarttj-n8n.duckdns.org/
       GENERIC_TIMEZONE: Asia/Dushanbe
       TZ: Asia/Dushanbe
@@ -24,7 +24,6 @@ services:
       EXECUTIONS_DATA_SAVE_ON_MANUAL_EXECUTIONS: true
       EXECUTIONS_DATA_PRUNE: true
       EXECUTIONS_DATA_MAX_AGE: 336
-      N8N_RUNNERS_ENABLED: true
       N8N_PROXY_HOPS: 1
       N8N_DIAGNOSTICS_ENABLED: false
       N8N_PERSONALIZATION_ENABLED: false
