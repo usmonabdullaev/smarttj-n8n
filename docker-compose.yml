@@ -9,6 +9,7 @@ services:
 
     environment:
       NODE_ENV: production
+      NODE_FUNCTION_ALLOW_EXTERNAL: axios,form-data
       N8N_HOST: smarttj-n8n.duckdns.org
       N8N_PROTOCOL: https
       N8N_PORT: 5678
