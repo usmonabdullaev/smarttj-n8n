@@ -1,3 +1,4 @@
 .env
+.emv.example
 docker-compose.yml
 .gitignore

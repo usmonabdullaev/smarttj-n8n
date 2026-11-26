@@ -10,13 +10,13 @@ services:
     environment:
       NODE_ENV: production
       NODE_FUNCTION_ALLOW_EXTERNAL: axios,form-data
-      N8N_HOST: smarttj-n8n.duckdns.org
+      N8N_HOST: ${N8N_HOST}
       N8N_PROTOCOL: https
-      N8N_PORT: 5678
-      N8N_WEBHOOK_URL: https://smarttj-n8n.duckdns.org/
-      N8N_EDITOR_BASE_URL: https://smarttj-n8n.duckdns.org/
-      GENERIC_TIMEZONE: Asia/Dushanbe
-      TZ: Asia/Dushanbe
+      N8N_PORT: ${N8N_PORT}
+      N8N_WEBHOOK_URL: ${N8N_WEBHOOK_URL}
+      N8N_EDITOR_BASE_URL: ${N8N_EDITOR_BASE_URL}
+      GENERIC_TIMEZONE: ${TZ}
+      TZ: ${TZ}
       N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY}
       EXECUTIONS_MODE: regular
       EXECUTIONS_DATA_SAVE_ON_SUCCESS: none
